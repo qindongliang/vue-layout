@@ -1,30 +1,44 @@
 <template>
     <div class="demo-split" style="height: 100vh">
-      <Split v-model="split3">
-        <div slot="left" class="demo-split-pane no-padding">
-          <Split v-model="split4" mode="vertical">
-            <div slot="top" class="demo-split-pane">
-              Top Pane
-            </div>
-            <div slot="bottom" class="demo-split-pane">
-              Bottom Pane
-            </div>
-          </Split>
-        </div>
-        <div slot="right" class="demo-split-pane">
-          Right Pane
-        </div>
-      </Split>
+      <el-radio-group v-model="direction">
+        <el-radio label="ltr">从左往右开</el-radio>
+        <el-radio label="rtl">从右往左开</el-radio>
+        <el-radio label="ttb">从上往下开</el-radio>
+        <el-radio label="btt">从下往上开</el-radio>
+      </el-radio-group>
+
+      <el-button @click="drawer = true" type="primary" style="margin-left: 16px;">
+        点我打开
+      </el-button>
+
+      <el-drawer
+          title="我是标题"
+          :visible.sync="drawer"
+          :direction="direction"
+          :before-close="handleClose">
+        <span>我来啦!</span>
+      </el-drawer>
+
     </div>
 </template>
 
 <script>
 export default {
   name: "Test7",
-  data () {
+  data() {
     return {
-      split3: 0.5,
-      split4: 0.5
+      drawer: false,
+      direction: 'rtl',
+    };
+  },
+  methods: {
+    handleClose(done) {
+      this.$confirm('确认关闭？')
+          .then( _ => {
+            console.log("1111")
+            done();
+          })
+          .catch(_ => {});
     }
   }
 }

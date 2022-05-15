@@ -1,22 +1,9 @@
 <template>
 
-  <Layout :style="{padding: '0 24px 24px'}">
-    <!--    <Breadcrumb :style="{margin: '24px 0'}">-->
-    <!--      <BreadcrumbItem>Home</BreadcrumbItem>-->
-    <!--      <BreadcrumbItem>Components</BreadcrumbItem>-->
-    <!--      <BreadcrumbItem>Layout</BreadcrumbItem>-->
-    <!--    </Breadcrumb>-->
-    <Content :style="{padding: '24px', minHeight: '280px', background: '#fff'}">
+  <div style="width: 99%;border: 1px solid green">
+    信息页面
 
-      <template>
-        <div>
-          <Table highlight-row ref="currentRowTable" :columns="columns3" :data="data1"></Table>
-          <Button @click="handleClearCurrentRow">Clear</Button>
-        </div>
-      </template>
-
-    </Content>
-  </Layout>
+  </div>
 </template>
 
 <script>

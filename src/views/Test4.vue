@@ -3,27 +3,25 @@
   <div id="box" style="height: 100vh">
 
     <template>
-      <Row>
-        <Col span="12" style="background-color: green">
-
-          col-12
-
-        </Col>
-        <Col span="12" style="background-color: pink" >col-12</Col>
-      </Row>
+      <el-row>
+        <el-col span="12" style="background-color: green">
+          主机日志A-col-12
+        </el-col>
+        <el-col span="12" style="background-color: pink" >主机日志B-col-12</el-col>
+      </el-row>
       <br>
-      <Row>
-        <Col span="8">col-8</Col>
-        <Col span="8">col-8</Col>
-        <Col span="8">col-8</Col>
-      </Row>
+      <el-row>
+        <el-col span="8">col-8</el-col>
+        <el-col span="8" style="background-color: gray">col-8</el-col>
+        <el-col span="8">col-8</el-col>
+      </el-row>
       <br>
-      <Row>
-        <Col span="6">col-6</Col>
-        <Col span="6">col-6</Col>
-        <Col span="6">col-6</Col>
-        <Col span="6">col-6</Col>
-      </Row>
+      <el-row>
+        <el-col span="6">col-6</el-col>
+        <el-col span="6" style="background-color: darkseagreen">col-6</el-col>
+        <el-col span="6">col-6</el-col>
+        <el-col span="6" style="background-color: burlywood">col-6</el-col>
+      </el-row>
     </template>
 
 </div>

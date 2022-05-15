@@ -1,17 +1,17 @@
 <template>
 
-  <SideMenu :leftSubmenus="leftSubmenus" :activeName="defaultActiveMenuName" :defaultOpenNames="defaultOpenNames">
+  <Content :leftSubmenus="leftSubmenus" :activeName="defaultActiveMenuName" :defaultOpenNames="defaultOpenNames">
 
-  </SideMenu>
+  </Content>
 </template>
 
 <script>
-import SideMenu from "@/components/SideMenu";
+import Content from "@/components/Content";
 
 export default {
   name: "Nav2",
   components:{
-    SideMenu
+    Content
   },
   data() {
     return {

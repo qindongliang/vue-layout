@@ -1,17 +1,17 @@
 <template>
 
-  <SideMenu :leftSubmenus="leftSubmenus" :activeName="defaultActiveMenuName" :defaultOpenNames="defaultOpenNames">
+  <Content :leftSubmenus="leftSubmenus" :activeName="defaultActiveMenuName" :defaultOpenNames="defaultOpenNames">
 
-  </SideMenu>
+  </Content>
 
 </template>
 
 <script>
-import SideMenu from '@/components/SideMenu';
+import Content from '@/components/Content';
 export default {
   name: "Nav1",
   components:{
-    SideMenu
+    Content
   },
   data() {
     return {
@@ -20,7 +20,7 @@ export default {
       leftSubmenus: [    // 左侧联动导航一
         {
           name: '用户管理',
-          icon:'ios-navigate',
+          icon:'el-icon-s-home',
           menuItems:[
             {routPath:"/test1/nav-1-1",text:"注册"},
             {routPath:"/test1/nav-1-2",text:"信息"},
@@ -29,7 +29,7 @@ export default {
         },
         {
         name: '权限管理',
-        icon:'ios-paper',
+        icon:'el-icon-s-data',
         menuItems:[
           {routPath:"/test1/nav-2-1",text:"redis权限"},
           {routPath:"/test1/nav-2-2",text:"大数据权限"}
@@ -38,6 +38,13 @@ export default {
       ],
       logo: require('assets/img.png')
     }
+  },
+  methods:{
+
+    test(){
+      this.$router.getRoutes()
+    },
+
   }
 }
 </script>

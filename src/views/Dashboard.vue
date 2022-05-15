@@ -1,46 +1,12 @@
 <template>
+<div id="box" style="height: 100vh">
+  <el-carousel :interval="4000" type="card" height="200px">
+    <el-carousel-item v-for="item in 6" :key="item">
+      <h3 class="medium">{{ item }}</h3>
+    </el-carousel-item>
+  </el-carousel>
 
-  <div id="box">
-
-    <template>
-      <List>
-        <ListItem>
-          <ListItemMeta avatar="https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar" title="This is title" description="This is description, this is description." />
-        </ListItem>
-        <ListItem>
-          <ListItemMeta avatar="https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar" title="This is title" description="This is description, this is description." />
-        </ListItem>
-        <ListItem>
-          <ListItemMeta avatar="https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar" title="This is title" description="This is description, this is description." />
-          <template slot="action">
-            <li>
-              <a href="">Edit</a>
-            </li>
-            <li>
-              <a href="">More</a>
-            </li>
-          </template>
-        </ListItem>
-        <ListItem>
-          <ListItemMeta avatar="https://dev-file.iviewui.com/userinfoPDvn9gKWYihR24SpgC319vXY8qniCqj4/avatar" title="This is title" description="This is description, this is description." />
-          <template slot="action">
-            <li>
-              <a href="">Edit</a>
-            </li>
-            <li>
-              <a href="">More</a>
-            </li>
-          </template>
-        </ListItem>
-      </List>
-    </template>
-
-
-
-
-  </div>
-
-
+</div>
 </template>
 
 <script>
@@ -48,9 +14,6 @@ export default {
   name: "Dashboard.vue",
   data () {
     return {
-      value2: false,
-      value7: false,
-      value8: false
     }
   }
 }
@@ -58,12 +21,20 @@ export default {
 
 <style scoped>
 
-#box {
-  height: 90vh;
-  width:100%;
-  display:flex;
-  align-items: center;
-  justify-content: center;
+.el-carousel__item h3 {
+  color: #475669;
+  font-size: 14px;
+  opacity: 0.75;
+  line-height: 200px;
+  margin: 0;
+}
+
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n+1) {
+  background-color: #d3dce6;
 }
 
 </style>
