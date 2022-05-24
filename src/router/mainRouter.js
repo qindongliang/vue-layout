@@ -70,7 +70,8 @@ router.beforeEach((to, from, next) => {
                     router.addRoute(item)
                 })
 
-                router.push({ path: "/" })
+                // router.push({ path: "/" })
+                router.push({ path: to.path }) //fix 刷新回首页的问题
             }
             NProgress.done()
         }
