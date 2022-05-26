@@ -121,10 +121,11 @@ const mutations = {
     state.avatar = avatar
     setKeyValue("avatar", avatar)
   },
-  REMOVE_INFO: (state, avatar) => {
+  REMOVE_INFO: (state) => {
     removeToken()
     removeKey("name")
     removeKey("role")
+    removeKey("avatar")
   },
 }
 
