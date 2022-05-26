@@ -57,6 +57,7 @@
 
 <script>
 import { validUsername } from '@/utils/validate'
+import { getGoPath, removeGoPath } from '@/utils/auth' // get token from cookie
 import SvgIcon from '@/components/SvgIcon'
 export default {
   name: "Login",
@@ -118,7 +119,14 @@ export default {
           this.$store.dispatch('user/login', this.loginForm).then(() => {
             // console.log("login ok skip /")
             // this.$router.push({ path: '/' })
-            this.$router.push({ path: '/dashboard' })
+            let goPath = getGoPath()
+            if(goPath){
+              window.location.href=goPath
+              removeGoPath()
+            }else {
+              this.$router.push({path: '/'})
+            }
+
             this.loading = false
           }).catch(() => {
             this.loading = false

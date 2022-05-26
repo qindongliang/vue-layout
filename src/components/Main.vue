@@ -98,7 +98,7 @@ export default {
     handleClick(clickType){
       if(clickType==="logout"){
         this.$store.dispatch('user/logout').then(() => {
-          console.log("执行退出..")
+          // console.log("执行退出..")
           this.$router.push({ path: '/login' })
         }).catch(() => {
           Message.error("退出报错")

@@ -1,6 +1,6 @@
 <template>
   <div class="wscn-http404-container">
-    404
+    <h1>骚年，访问地址不存在</h1>
   </div>
 </template>
 

@@ -5,9 +5,10 @@ import PrivateRouter from './privateRouter'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
 import { Message } from 'element-ui'
-import { getKey,getToken } from '@/utils/auth' // get token from cookie
+import { getKey,getToken ,setGoPath } from '@/utils/auth' // get token from cookie
 import store from '../store'
 import {filterAsyncRoutes} from "@/utils/validate";
+import fr from "element-ui/src/locale/lang/fr";
 
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
@@ -37,30 +38,16 @@ const router = new Router({
 
 // console.log(filterRouters)
 const whiteList = ['/login'] // no redirect whitelist
-var addRouFlag = false
+let addRouFlag = false
+
 router.beforeEach((to, from, next) => {
-    // start progress bar
     NProgress.start()
-    let defaultTitle=" layout test"
-    // set page title
-    if(to.meta.title){
-        defaultTitle=to.meta.title
-    }
-    document.title = defaultTitle
-
-    console.log("from: "+from.path+" to: "+to.path)
     // determine whether the user has logged in
-    const hasToken = getToken()
+    if (to.path != '/login') {
 
-    if (hasToken) {
-
-        if (to.path === '/login') {
-            console.log("进login")
-            next({ path: '/' })// if is logged in, redirect to the home page
-            NProgress.done()
-        } else {
+        const hasToken = getToken()
+        if(hasToken){
             next()
-            // 根据用户角色，获取权限，然后放在vuex和cookie里面
             if (!addRouFlag) {
                 addRouFlag = true
                 let roles = [store.getters["user/getRole"]]
@@ -69,25 +56,22 @@ router.beforeEach((to, from, next) => {
                 accessedRoutes.forEach(item => {
                     router.addRoute(item)
                 })
-
-                // router.push({ path: "/" })
-                router.push({ path: to.path }) //fix 刷新回首页的问题
+                router.push({ path: to.path })
             }
+        }else{
+            //无token，非登录
+            setGoPath(window.location.href)
+            next({ path: '/login' })
             NProgress.done()
         }
 
-    } else {
-        /* has no token*/
-        // console.log("333")
-        if (whiteList.indexOf(to.path) !== -1) {
-            // in the free login whitelist, go directly
-            next()
-        } else {
-            // other pages that do not have permission to access are redirected to the login page.
-            next(`/login?redirect=${to.path}`)
-            NProgress.done()
-        }
+
+    }else{
+        next()
     }
+
+
+
 })
 
 router.afterEach(() => {
