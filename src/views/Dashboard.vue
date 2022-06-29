@@ -10,13 +10,19 @@
 </template>
 
 <script>
+import request from "@/utils/request";
 export default {
   name: "Dashboard.vue",
   data () {
     return {
     }
-  }
-}
+  },mounted() {
+
+
+    request('get',  '/data', {}).then(res=>{
+      console.log(JSON.stringify(res.data,null,2))
+    })
+}}
 </script>
 
 <style scoped>
